@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#6e2030">
+    <meta name="description" content="A joyful invitation to celebrate a wedding.">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="invitation">
+      <div class="invitation__frame">
+        <div class="invitation__content">
+          <div class="toran" aria-hidden="true">
+            <span>✿</span><span>❋</span><span>✿</span><span>❋</span><span>✿</span><span>❋</span><span>✿</span>
+          </div>
+          <p class="eyebrow"><span aria-hidden="true">✦</span> A celebration of love <span aria-hidden="true">✦</span></p>
+
+          <div class="floral-mark" aria-hidden="true">
+            <span class="floral-mark__ring"></span>
+            <span class="floral-mark__center">ॐ</span>
+          </div>
+
+          <p class="invitation__intro">With the blessings of our families</p>
+          <p class="invitation__auspicious" lang="hi">शुभ विवाह</p>
+          <h1>A new chapter<br>begins</h1>
+          <p class="invitation__names">Your names here</p>
+          <div class="divider" aria-hidden="true"><span>❈</span></div>
+          <p class="invitation__message">Join us for a day filled with love,<br>laughter, and beautiful traditions.</p>
+          <p class="invitation__date">Our wedding celebration</p>
+
+          <button class="open-button" id="open-invitation" type="button">
+            <span>Open Invitation</span>
+            <span class="open-button__arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="invitation__hint">A little story, made with love</p>
+        </div>
+      </div>
+      <p class="page-note">With love, from our families to yours</p>
+    </main>
+
+    <dialog class="video-dialog" id="invitation-dialog" aria-labelledby="video-title">
+      <div class="video-dialog__header">
+        <h2 id="video-title">Your invitation</h2>
+        <button class="close-button" id="close-invitation" type="button" aria-label="Close invitation video">×</button>
+      </div>
+      <video id="invitation-video" controls playsinline preload="metadata">
+        Your browser does not support video playback.
+      </video>
+      <p class="video-dialog__status" id="video-status" role="status" aria-live="polite"></p>
+    </dialog>
+  </body>
+</html>
