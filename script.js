@@ -1,46 +1,54 @@
-const openButton = document.querySelector("#open-invitation");
-const closeButton = document.querySelector("#close-invitation");
-const dialog = document.querySelector("#invitation-dialog");
-const video = document.querySelector("#invitation-video");
-const status = document.querySelector("#video-status");
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#6e2030">
+    <meta name="description" content="A joyful invitation to celebrate a wedding.">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="invitation">
+      <div class="invitation__frame">
+        <div class="invitation__content">
+          <div class="toran" aria-hidden="true">
+            <span>✿</span><span>❋</span><span>✿</span><span>❋</span><span>✿</span><span>❋</span><span>✿</span>
+          </div>
+          <p class="eyebrow"><span aria-hidden="true">✦</span> A celebration of love <span aria-hidden="true">✦</span></p>
 
-openButton.addEventListener("click", async () => {
-  status.textContent = "";
-  dialog.classList.add("video-dialog--fullscreen");
-  if (!dialog.open) {
-    dialog.showModal();
-  }
+          <div class="floral-mark" aria-hidden="true">
+            <span class="floral-mark__ring"></span>
+            <span class="floral-mark__center">ॐ</span>
+          </div>
 
-  const fullscreenRequest = typeof video.requestFullscreen === "function"
-    ? video.requestFullscreen().then(() => true, () => false)
-    : Promise.resolve(false);
+          <p class="invitation__intro">With the blessings of our families</p>
+          <p class="invitation__auspicious" lang="hi">शुभ विवाह</p>
+          <h1>A new chapter<br>begins</h1>
+          <div class="divider" aria-hidden="true"><span>❈</span></div>
+          <p class="invitation__message">Join us for a day filled with love,<br>laughter, and beautiful traditions.</p>
+          <p class="invitation__date">Our wedding celebration</p>
 
-  let playbackStarted = false;
-  try {
-    await video.play();
-    playbackStarted = true;
-  } catch {
-    status.textContent = "Add your video at assets/wedding-invitation.mp4 to play it here.";
-  }
+          <button class="open-button" id="open-invitation" type="button">
+            <span>Open Invitation</span>
+            <span class="open-button__arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="invitation__hint">A little story, made with love</p>
+        </div>
+      </div>
+      <p class="page-note">With love, from our families to yours</p>
+    </main>
 
-  const enteredFullscreen = await fullscreenRequest;
-  if (playbackStarted && !enteredFullscreen) {
-    status.textContent = "Full-screen playback is unavailable in this browser; showing the video in an expanded view.";
-  }
-});
-
-closeButton.addEventListener("click", () => {
-  dialog.close();
-});
-
-dialog.addEventListener("close", () => {
-  video.pause();
-  video.currentTime = 0;
-  dialog.classList.remove("video-dialog--fullscreen");
-});
-
-video.addEventListener("error", () => {
-  status.textContent = "The video could not be loaded. Check that assets/wedding-invitation.mp4 exists and is a supported video file.";
-});
-
-video.src = "assets/wedding-invitation.mp4";
+    <dialog class="video-dialog" id="invitation-dialog" aria-labelledby="video-title">
+      <div class="video-dialog__header">
+        <h2 id="video-title">Your invitation</h2>
+        <button class="close-button" id="close-invitation" type="button" aria-label="Close invitation video">×</button>
+      </div>
+      <video id="invitation-video" controls playsinline preload="metadata">
+        Your browser does not support video playback.
+      </video>
+      <p class="video-dialog__status" id="video-status" role="status" aria-live="polite"></p>
+    </dialog>
+  </body>
+</html>
